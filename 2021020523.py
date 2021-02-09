@@ -12,7 +12,7 @@ while True:
     for i in range(0,4):
         random_target += str(int(random.random() * 10))
     if(len(random_target) == 4):
-        print(f"랜덤 생성 완료 : {random_target}")
+#        print(f"랜덤 생성 완료 : {random_target}")
         break
     
     
