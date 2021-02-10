@@ -29,4 +29,5 @@ while True:
     sql = "insert into usertable values ('" + data1 + "','" + data2 + "','" + data3 + "'," + data4 + ")"
     cur.execute(sql)
     con.commit()
+    
 con.close()

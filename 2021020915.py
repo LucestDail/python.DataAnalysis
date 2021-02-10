@@ -22,38 +22,32 @@ main에서 더하여 총합을 구하는 프로그램 작성하기
 import threading # 스레드 모듈
 import time # 스레드 대기 기능 모듈
 
-class threadPart:
-    startNum = 0
-    sumValue = 0
-    def __init__(self, startNum):
-        self.startNum = startNum
-    def sumPart(self):
-        for i in range(self.startNum,self.startNum+2000):
-            self.sumValue += i
+class Sum : 
+    startnum = 0
+    endnum = 0
+    sum = 0
+    def __init__(self,snum, enum):
+        self.startnum = snum
+        self.endnum = enum
         
+    def getSum(self):
+        for i in range(self.startnum, self.endnum+1):
+            self.sum += i
+        return self.sum()
+        
+if __name__ == "__main__":
+    sumlist = []
+    thlist = []
+    for i in range(0,5):
+        sumlist.append(Sum((i*2000)+1, (i+1)*2000))
+        thlist.append(threading.Thread(target=sumlist[i].getSum()))
+        thlist[i].start()
     
-tp1 = threadPart(1)
-tp2 = threadPart(2001)
-tp3 = threadPart(4001)
-tp4 = threadPart(6001)
-tp5 = threadPart(8001)
-
-th1 = threading.Thread(target=tp1.sumPart)
-th2 = threading.Thread(target=tp2.sumPart)
-th3 = threading.Thread(target=tp3.sumPart)
-th4 = threading.Thread(target=tp4.sumPart)
-th5 = threading.Thread(target=tp5.sumPart)
-
-th1.start() 
-th2.start()
-th3.start()
-th4.start()
-th5.start()
-th1.join()
-th2.join()
-th3.join()
-th4.join()
-th5.join()
-print(th1)
-returnValue = 0
-print(f"main 종료 : {returnValue}")
+    for th in thlist:
+        th.join()
+        
+    sum = 0
+    for s in sumlist:
+        sum += s.sum
+    
+    print(f"main 종료 : {sum}")

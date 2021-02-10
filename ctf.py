@@ -11,6 +11,6 @@ def c_to_v(c_value):
     return ((9/5) * c_value) +32
 
 
-
-for i in range(-20,50):
-    print(c_to_v(i))
+if __name__ == "__main__":
+    for i in range(-20,50):
+        print(c_to_v(i))
