@@ -1,0 +1,49 @@
+"""
+    guiex2.py : 이미지 보기 예
+"""
+from tkinter import *
+from time import *
+
+## 전역  변수 선언 부분 ## 
+fnameList = ["jeju1.gif", "jeju2.gif", "jeju3.gif", 
+             "jeju4.gif", "jeju5.gif", "jeju6.gif", 
+             "jeju7.gif", "jeju8.gif", "jeju9.gif"]
+photoList = [None] * 9
+num = 0
+
+## 함수 선언 부분 ## 
+def clickNext() :
+    global num #num 변수는 전역변수로 사용하도록 선언
+    num += 1
+    if num > len(fnameList)-1 :
+        num = 0
+    photo = PhotoImage(file = "gif/" + fnameList[num])
+    pLabel.configure(image = photo)
+    pLabel.image = photo
+    
+def clickPrev() :  #이전 버튼 클릭시 호출되는 함수. 이벤트 핸들러.
+    global num  #num 변수는 전역변수로 사용하도록 선언
+    num -= 1
+    if num < 0 :
+        num = len(fnameList)-1  #이미지 인덱스의 마지막 
+    photo = PhotoImage(file = "gif/" + fnameList[num])
+    pLabel.configure(image = photo)
+    pLabel.image=photo
+    
+## 메인 코드 부분
+window = Tk()
+window.geometry("700x500")
+window.title("사진 앨범 보기")
+
+btnPrev = Button(window, text = "<< 이전", command = clickPrev)
+btnNext = Button(window, text = "다음 >>", command = clickNext)
+
+photo = PhotoImage(file = "gif/" + fnameList[0])
+pLabel = Label(window, image = photo)  
+
+#window에 보여질 위치 지정
+btnPrev.place(x = 250, y = 10)
+btnNext.place(x = 400, y = 10)
+pLabel.place(x = 15, y = 50)
+
+window.mainloop()
