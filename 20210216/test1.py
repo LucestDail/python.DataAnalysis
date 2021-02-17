@@ -15,8 +15,10 @@ infile="../sales_2015.xlsx"
 df = pd.read_excel(infile,"january_2015",index_col=None)
 df_value = df.loc[:,["Customer Name","Sale Amount"]]
 plt.style.use("ggplot")
-xvalue = df_value["Customer Name"].tolist()
-yvalue = df_value["Sale Amount"].tolist()
+#xvalue = df_value["Customer Name"].tolist()
+xvalue = list(df_value["Customer Name"])
+#yvalue = df_value["Sale Amount"].tolist()
+yvalue = list(df_value["Sale Amount"])
 x_index = range(len(xvalue))
 fig = plt.figure()
 ax1 = fig.add_subplot(1,1,1)

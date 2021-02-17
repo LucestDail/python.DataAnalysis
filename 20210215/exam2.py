@@ -13,7 +13,10 @@ import pandas as pd
 infile = "sales_2015.xlsx"
 
 df = pd.read_excel(infile,"january_2015",index_col=None)
-df_value = df[df['Customer Name'].str.startswith("J")]
+print(df)
+#df_value = df[df['Customer Name'].str.startswith("J")]
+# S 가 들어간 사람
+df_value = df[df['Customer Name'].str.contains("S") | df['Customer Name'].str.contains("s")]
 writer = pd.ExcelWriter("Sales_2015_J.xlsx",engine="openpyxl")
 df_value.to_excel(writer,sheet_name="sale_2015_J",index=False)
 writer.save()

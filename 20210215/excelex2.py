@@ -10,7 +10,7 @@ filename="sales_2015.xlsx"
 book = openpyxl.load_workbook(filename)
 #book.worksheets : excel 파일의 모든 sheet를 리턴.
 for i, sheet in enumerate(book.worksheets) :
-    print(book.sheetnames[i]) #sheet 이름
+    print(i,",",book.sheetnames[i]) #sheet 이름
     data=[]
     for r,row in enumerate(sheet.rows) : #해당 sheet의 행값 들. 
         line=[]
