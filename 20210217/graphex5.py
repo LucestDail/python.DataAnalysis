@@ -12,6 +12,9 @@ rc('font', family="Malgun Gothic")
 labels = ['개구리','돼지','개','통나무'] #라벨
 sizes = [15,30,45,10] #사이즈
 colors = ['yellowgreen','gold','lightskyblue','lightcoral'] #색깔
+
+print(type(labels),",",type(sizes),",",type(colors))
+
 explode = (0,0.1,0,0) #떨어트림
 plt.title("Pie Chart")
 

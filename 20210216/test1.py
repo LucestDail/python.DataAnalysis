@@ -14,6 +14,8 @@ rc('font',family=font_name) #현재 폰트 변경
 infile="../sales_2015.xlsx"
 df = pd.read_excel(infile,"january_2015",index_col=None)
 df_value = df.loc[:,["Customer Name","Sale Amount"]]
+print(df_value)
+print(type(df_value))
 plt.style.use("ggplot")
 #xvalue = df_value["Customer Name"].tolist()
 xvalue = list(df_value["Customer Name"])
